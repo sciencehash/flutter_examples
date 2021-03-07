@@ -4,42 +4,38 @@ import 'package:theme_provider/theme_provider.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // var controller = ThemeProvider.controllerOf(context);
-
     return Scaffold(
-      appBar: AppBar(title: Text("Speech Driver")),
+      appBar: AppBar(
+        title: Text("Multi-theme example"),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            // _buildButton(
-            //   text: "Next Theme",
-            //   onPressed: controller.nextTheme,
-            // ),
-            // _buildButton(
-            //   text: "Theme Dialog",
-            //   onPressed: () {
-            //     showDialog(context: context, builder: (_) => ThemeDialog());
-            //   },
-            // ),
-            // _buildButton(
-            //   text: "Second Screen",
-            //   onPressed: () {
-            //     Navigator.push(
-            //         context, MaterialPageRoute(builder: (_) => SecondPage()));
-            //   },
-            // ),
-            // Divider(),
-            // Text('Current theme: ${controller.theme.id}'),
+          children: [
+            Text("Home Page"),
+            SizedBox(height: 40),
+            TextButton.icon(
+              icon: Icon(Icons.brightness_6),
+              label: Text('Next Theme'),
+              onPressed: () {
+                // Change to the next theme
+                ThemeProvider.controllerOf(context).nextTheme();
+              },
+            ),
+            SizedBox(height: 15),
+            TextButton.icon(
+              icon: Icon(Icons.brightness_6),
+              label: Text('Select Theme'),
+              onPressed: () {
+                // Show a dialog with the theme list
+                showDialog(
+                  context: context,
+                  builder: (_) => ThemeDialog(),
+                );
+              },
+            )
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.menu),
-        onPressed: () {
-          // showDialog(context: context, builder: (_) => ThemeDialog());
-          ThemeProvider.controllerOf(context).nextTheme();
-        },
       ),
     );
   }

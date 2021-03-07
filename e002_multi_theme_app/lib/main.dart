@@ -27,20 +27,17 @@ class MyApp extends StatelessWidget {
           } else {
             controller.setTheme('light');
           }
-          controller.forgetSavedTheme();
         }
       },
       themes: <AppTheme>[
         lightAppTheme(),
         darkAppTheme(),
-        // AppTheme.purple(id: 'purple'),
       ],
       child: ThemeConsumer(
         child: Builder(
           builder: (themeContext) => MaterialApp(
             theme: ThemeProvider.themeOf(themeContext).data,
-            title: 'Speech Driver',
-            debugShowCheckedModeBanner: false,
+            title: 'Multi-theme example',
             home: HomePage(),
           ),
         ),
